@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt
+
+# Plotting the distribution of strikeout percentage (k_percent)
+plt.figure(figsize=(10, 6))
+plt.hist(data['k_percent'], bins=15, color='skyblue', edgecolor='black')
+plt.title('Distribution of Strikeout Percentages (K%)', fontsize=14)
+plt.xlabel('Strikeout Percentage (%)', fontsize=12)
+plt.ylabel('Frequency', fontsize=12)
+plt.grid(True)
+plt.show()
+# Calculating the correlation between strikeout percentage (k_percent) and weighted on-base average (woba)
+correlation = data['k_percent'].corr(data['woba'])
+
+correlation
+.6793021257214468
