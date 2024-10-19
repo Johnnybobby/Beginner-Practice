@@ -1,0 +1,32 @@
+# Load required libraries
+library(ggplot2)
+
+# Creating a dataframe with relevant data for analysis
+player_data <- data.frame(
+  last_name = c(
+    "Judge", "Rooker Jr.", "Raleigh", "Seager", "Hernández",
+    "Greene", "Burger", "Rodríguez", "Witt Jr.", "Suzuki", "O'Hoppe", "Varsho", "Sánchez", "De La Cruz",
+    "Mountcastle", "Ramos", "Langeliers", "Goldschmidt", "Devers"
+  ),
+  first_name = c(
+    "Aaron", "Brent", "Cal", "Corey", "Teoscar",
+    "Riley", "Jake", "Julio", "Bobby", "Seiya", "Logan", "Daulton", "Jesús", "Elly",
+    "Ryan", "Heliot", "Shea", "Paul", "Rafael"
+  ),
+  sweet_spot_percent = c(
+    40.8, 38.3, 35.6, 38.6, 33.8,
+    39.1, 32.4, 33.2, 35.7, 38.8, 42.9, 30.2, 31.8, 35.7,
+    36.2, 34.3, 35.3, 34.3, 35.2
+  )
+)
+
+# Plotting the top 10 players with the highest sweet-spot rate
+ggplot(player_data, aes(x = reorder(paste(first_name, last_name), sweet_spot_percent), y = sweet_spot_percent)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  coord_flip() +
+  labs(
+    title = "Top 10 Players with Highest Sweet-Spot Rate",
+    x = "Player",
+    y = "Sweet-Spot Rate (%)"
+  ) +
+  theme_minimal()
