@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 
 # Plotting the distribution of strikeout percentage (k_percent)
 plt.figure(figsize=(10, 6))
