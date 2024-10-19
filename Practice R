@@ -1,5 +1,3 @@
-# Load required libraries
-library(ggplot2)
 
 # Creating a dataframe with relevant data for analysis
 player_data <- data.frame(
