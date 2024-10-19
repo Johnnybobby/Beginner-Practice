@@ -1,0 +1,39 @@
+# Load required libraries
+library(ggplot2)
+
+# Creating a dataframe with relevant data for analysis
+player_data <- data.frame(
+  last_name = c(
+    "Judge", "Rooker Jr.", "Raleigh", "Seager", "Hernández",
+    "Greene", "Burger", "Rodríguez", "Witt Jr.", "Suzuki", "O'Hoppe", "Varsho", "Sánchez", "De La Cruz",
+    "Mountcastle", "Ramos", "Langeliers", "Goldschmidt", "Devers"
+  ),
+  first_name = c(
+    "Aaron", "Brent", "Cal", "Corey", "Teoscar",
+    "Riley", "Jake", "Julio", "Bobby", "Seiya", "Logan", "Daulton", "Jesús", "Elly",
+    "Ryan", "Heliot", "Shea", "Paul", "Rafael"
+  ),
+  sweet_spot_percent = c(
+    40.8, 38.3, 35.6, 38.6, 33.8,
+    39.1, 32.4, 33.2, 35.7, 38.8, 42.9, 30.2, 31.8, 35.7,
+    36.2, 34.3, 35.3, 34.3, 35.2
+  ),
+  hard_hit_percent = c(
+    61.0, 49.6, 48.1, 50.7, 46.8,
+    47.1, 46.8, 48.4, 48.3, 49.2, 46.3, 34.0, 51.3, 45.7,
+    45.2, 47.5, 44.0, 49.6, 52.6
+  )
+)
+
+# Plotting the comparison between sweet-spot rate and hard-hit rate
+ggplot(player_data, aes(x = reorder(paste(first_name, last_name), sweet_spot_percent))) +
+  geom_bar(aes(y = sweet_spot_percent, fill = "Sweet-Spot Rate"), stat = "identity", position = "dodge") +
+  geom_bar(aes(y = hard_hit_percent, fill = "Hard-Hit Rate"), stat = "identity", position = "dodge") +
+  coord_flip() +
+  labs(
+    title = "Comparison of Sweet-Spot Rate and Hard-Hit Rate",
+    x = "Player",
+    y = "Percentage (%)",
+    fill = "Metric"
+  ) +
+  theme_minimal()
